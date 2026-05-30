@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DENG YUFAN — Design. Code. Humanity.</title>
+<meta name="description" content="DENG YUFAN — building human-centered products where AI and new media meet the experience industries: travel, leisure, and wellbeing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f0e7; --paper-2:#efe8da; --ink:#17120b; --ink-2:#5d5446; --ink-3:#8a8071;
+    --ember:#c2552a; --ember-2:#a8431f; --indigo:#22344a; --line:#ddd4c2;
+    --display:'Fraunces','Songti SC','STSong',Georgia,serif;
+    --body:'Hanken Grotesk','PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'Courier New',monospace;
+    --max:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  body::after{content:''; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px}
+
+  .topbar{position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:20px 32px}
+  .topbar .sig{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2)}
+  .lang-seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:rgba(244,240,231,.7); backdrop-filter:blur(6px)}
+  .lang-seg button{border:none;background:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:6px 13px;cursor:pointer;color:var(--ink-3)}
+  .lang-seg button.on{background:var(--ink);color:var(--paper)}
+
+  .hero{position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden}
+  #hero-art{position:absolute; inset:0; width:100%; height:100%; z-index:0; opacity:.6}
+  .hero-veil{position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(100deg, var(--paper) 22%, rgba(244,240,231,.55) 50%, rgba(244,240,231,.12) 78%)}
+  .hero-inner{position:relative; z-index:2; width:100%}
+  .eyebrow{font-family:var(--mono); font-size:13px; letter-spacing:.34em; text-transform:uppercase; color:var(--ember); margin-bottom:26px}
+  h1.name{font-family:var(--display); font-weight:500; font-size:clamp(56px,12vw,148px); line-height:.92; letter-spacing:-.02em}
+  h1.name .ln{display:block; overflow:hidden}
+  h1.name .ln span{display:block; transform:translateY(105%); animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}
+  h1.name .ln:nth-child(2) span{animation-delay:.12s}
+  @keyframes rise{to{transform:translateY(0)}}
+  .vision-line{font-family:var(--display); font-style:italic; font-weight:400; font-size:clamp(19px,2.4vw,28px); color:var(--ink-2); max-width:34ch; margin-top:30px; opacity:0; animation:fade 1s ease .55s forwards}
+  .hero-meta{display:flex; gap:28px; flex-wrap:wrap; margin-top:42px; opacity:0; animation:fade 1s ease .8s forwards}
+  .hero-meta .item{display:flex; flex-direction:column; gap:3px}
+  .hero-meta .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .hero-meta .v{font-family:var(--mono);font-size:13px;color:var(--ink)}
+  .scrollcue{position:absolute; bottom:30px; left:32px; z-index:2; font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); opacity:0; animation:fade 1s ease 1.1s forwards}
+  .scrollcue::after{content:'↓'; display:inline-block; margin-left:8px; animation:bob 1.8s ease-in-out infinite}
+  @keyframes fade{to{opacity:1}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+  section{padding:clamp(70px,11vh,130px) 0; position:relative}
+  .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:54px}
+  .sec-head .idx{font-family:var(--mono); font-size:12px; color:var(--ember); letter-spacing:.1em}
+  .sec-head h2{font-family:var(--display); font-weight:500; font-size:clamp(28px,4vw,44px); letter-spacing:-.01em}
+
+  .statement{background:var(--paper-2)}
+  .statement p{font-family:var(--display); font-weight:400; font-size:clamp(22px,3.2vw,40px); line-height:1.3; letter-spacing:-.01em; max-width:26ch}
+  .statement p .em{color:var(--ember); font-style:italic}
+
+  .projects{display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--line)}
+  .proj{position:relative; padding:46px 40px 40px; border-bottom:1px solid var(--line); cursor:pointer; transition:background .4s ease; overflow:hidden}
+  .proj:nth-child(odd){border-right:1px solid var(--line)}
+  .proj::before{content:attr(data-n); position:absolute; top:24px; right:34px; font-family:var(--display); font-size:88px; line-height:1; color:var(--line); transition:color .4s ease, transform .5s cubic-bezier(.22,1,.36,1); z-index:0}
+  .proj:hover{background:var(--paper-2)}
+  .proj:hover::before{color:var(--ember); transform:translateY(-4px)}
+  .proj > *{position:relative; z-index:1}
+  .proj .kind{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:14px}
+  .proj h3{font-family:var(--display); font-weight:500; font-size:31px; letter-spacing:-.01em; margin-bottom:12px}
+  .proj h3 .arrow{display:inline-block; transition:transform .35s ease; color:var(--ember)}
+  .proj:hover h3 .arrow{transform:translate(5px,-5px)}
+  .proj .desc{color:var(--ink-2); font-size:15.5px; max-width:46ch; margin-bottom:22px}
+  .proj .links{display:flex; gap:18px; font-family:var(--mono); font-size:12px; letter-spacing:.06em}
+  .proj .links a{color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:3px; transition:border-color .3s, color .3s}
+  .proj .links a:hover{color:var(--ember); border-color:var(--ember)}
+  .more-line{padding:30px 40px; font-size:14px; color:var(--ink-2); border-bottom:1px solid var(--line)}
+  .more-line .mono{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:6px}
+
+  .philo{background:var(--ink); color:var(--paper)}
+  .philo .sec-head h2{color:var(--paper)}
+  .philo .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid rgba(244,240,231,.15)}
+  .philo .cell{padding:34px 26px; border-right:1px solid rgba(244,240,231,.15)}
+  .philo .cell:last-child{border-right:0}
+  .philo .cell .n{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ember); margin-bottom:16px}
+  .philo .cell .t{font-family:var(--display); font-size:21px; margin-bottom:8px}
+  .philo .cell .s{font-size:13.5px; color:#c9c1b2; line-height:1.55}
+
+  .next ul{list-style:none; border-top:1px solid var(--line)}
+  .next li{display:flex; gap:24px; align-items:baseline; padding:24px 0; border-bottom:1px solid var(--line); transition:padding-left .35s ease}
+  .next li:hover{padding-left:14px}
+  .next li .n{font-family:var(--mono); font-size:12px; color:var(--ember)}
+  .next li .x{font-family:var(--display); font-size:clamp(20px,2.6vw,28px); font-weight:500}
+  .next li .x small{display:block; font-family:var(--body); font-size:13.5px; color:var(--ink-3); font-weight:400; margin-top:3px}
+
+  .contact{background:var(--paper-2); text-align:center}
+  .contact .quote{font-family:var(--display); font-style:italic; font-size:clamp(20px,3vw,32px); line-height:1.4; color:var(--ink); max-width:24ch; margin:0 auto 46px}
+  .contact .big-mail{font-family:var(--display); font-weight:500; font-size:clamp(26px,5vw,58px); letter-spacing:-.01em; display:inline-block; border-bottom:2px solid transparent; transition:border-color .3s, color .3s}
+  .contact .big-mail:hover{color:var(--ember); border-color:var(--ember)}
+  .contact .links2{display:flex; gap:30px; justify-content:center; margin-top:34px; font-family:var(--mono); font-size:12px; letter-spacing:.1em; flex-wrap:wrap}
+  .contact .links2 a{color:var(--ink-2); transition:color .3s}
+  .contact .links2 a:hover{color:var(--ember)}
+  footer{padding:30px 32px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-3); border-top:1px solid var(--line)}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1; transform:none}
+
+  @media(max-width:760px){
+    .wrap{padding:0 22px}
+    .projects{grid-template-columns:1fr}
+    .proj:nth-child(odd){border-right:0}
+    .proj{padding:36px 22px}
+    .philo .grid{grid-template-columns:1fr 1fr}
+    .philo .cell:nth-child(2){border-right:0}
+    .topbar{padding:16px 22px}
+  }
+  @media(max-width:460px){ .philo .grid{grid-template-columns:1fr} .philo .cell{border-right:0} }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="sig" data-i18n="sig">DENG YUFAN ✦ DENGYUFAN0</div>
+    <div class="lang-seg" id="langSeg">
+      <button data-lang="en" class="on" onclick="setLang('en')">EN</button>
+      <button data-lang="zh" onclick="setLang('zh')">中</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <canvas id="hero-art"></canvas>
+    <div class="hero-veil"></div>
+    <div class="hero-inner wrap">
+      <div class="eyebrow">Design · Code · Humanity</div>
+      <h1 class="name"><span class="ln"><span>DENG</span></span><span class="ln"><span>YUFAN</span></span></h1>
+      <p class="vision-line" data-i18n="heroVision">Bringing AI and new media to the experience industries — travel, leisure, and wellbeing.</p>
+      <div class="hero-meta">
+        <div class="item"><span class="k">Focus</span><span class="v" data-i18n="mFocus">AI · New media</span></div>
+        <div class="item"><span class="k">Fields</span><span class="v" data-i18n="mFields">Tourism · Leisure · Health</span></div>
+        <div class="item"><span class="k">Stance</span><span class="v" data-i18n="mStance">Human-centered</span></div>
+        <div class="item"><span class="k">GitHub</span><span class="v">@DENGYUFAN0</span></div>
+      </div>
+    </div>
+    <div class="scrollcue" data-i18n="scroll">Selected work</div>
+  </header>
+
+  <section class="statement">
+    <div class="wrap reveal">
+      <p data-i18n="statement">I build human-centered products where AI and new media meet the <span class="em">experience industries</span> — travel, leisure, and wellbeing. Technology should make real experiences warmer, not colder.</p>
+    </div>
+  </section>
+
+  <section class="work">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="idx">01 — 04</span><h2 data-i18n="workTitle">Selected Work</h2></div>
+    </div>
+    <div class="wrap">
+      <div class="projects reveal">
+
+        <article class="proj" data-n="01" onclick="window.open('https://github.com/DENGYUFAN0/dazi-agent','_blank')">
+          <div class="kind" data-i18n="p1kind">AI agents · Social / Leisure</div>
+          <h3>dazi-agent <span class="arrow">↗</span></h3>
+          <p class="desc" data-i18n="p1desc">Agent-mediated human connection: two strangers' AI agents meet for a chat first — if they click, the people do. A small bet on AI making social and leisure life warmer.</p>
+          <div class="links"><a href="https://github.com/DENGYUFAN0/dazi-agent" onclick="event.stopPropagation()">Source</a></div>
+        </article>
+
+        <article class="proj" data-n="02" onclick="window.open('https://github.com/DENGYUFAN0/minecraft-ai-bot','_blank')">
+          <div class="kind" data-i18n="p2kind">AI · Embodied agents</div>
+          <h3>minecraft-ai-bot <span class="arrow">↗</span></h3>
+          <p class="desc" data-i18n="p2desc">An AI-driven agent that perceives and acts inside a living virtual world — a sandbox for how agents behave in immersive, playful spaces.</p>
+          <div class="links"><a href="https://github.com/DENGYUFAN0/minecraft-ai-bot" onclick="event.stopPropagation()">Source</a></div>
+        </article>
+
+        <article class="proj" data-n="03" onclick="window.open('https://github.com/DENGYUFAN0/DENGYUFAN-kecheng1','_blank')">
+          <div class="kind" data-i18n="p3kind">New media · Tourism · Web</div>
+          <h3>China Landscapes <span class="arrow">↗</span></h3>
+          <p class="desc" data-i18n="p3desc">A new-media showcase of China's natural landscapes — digital storytelling for destinations and travel.</p>
+          <div class="links"><a href="https://github.com/DENGYUFAN0/DENGYUFAN-kecheng1" onclick="event.stopPropagation()">Source</a></div>
+        </article>
+
+        <article class="proj" data-n="04" onclick="window.open('https://github.com/DENGYUFAN0/fire-compass','_blank')">
+          <div class="kind" data-i18n="p4kind">Product · Web · Engineering</div>
+          <h3>fire-compass <span class="arrow">↗</span></h3>
+          <p class="desc" data-i18n="p4desc">An inflation-aware financial-independence calculator — privacy-first, zero-dependency, unit-tested. Proof I ship polished, trustworthy products end to end.</p>
+          <div class="links">
+            <a href="https://dengyufan0.github.io/fire-compass/" onclick="event.stopPropagation()" data-i18n="liveDemo">Live demo</a>
+            <a href="https://github.com/DENGYUFAN0/fire-compass" onclick="event.stopPropagation()">Source</a>
+          </div>
+        </article>
+
+        <div class="more-line">
+          <span class="mono" data-i18n="moreK">Also</span>
+          <span data-i18n="moreV">Generative & creative-coding experiments (strange-equilibria), a cross-border shopping monitor, and assorted web pieces — the craft that feeds the work above. See all on <a href="https://github.com/DENGYUFAN0?tab=repositories" style="border-bottom:1px solid var(--ember);color:var(--ember)">GitHub ↗</a>.</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="philo">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="idx">✦</span><h2 data-i18n="philoTitle">How I work</h2></div>
+      <div class="grid reveal">
+        <div class="cell"><div class="n">01 / Human</div><div class="t" data-i18n="ph1t">People first</div><div class="s" data-i18n="ph1s">Technology should warm real-world experiences — travel, leisure, health — not replace them.</div></div>
+        <div class="cell"><div class="n">02 / Design</div><div class="t" data-i18n="ph2t">Form follows function</div><div class="s" data-i18n="ph2s">Every element earns its place. Restraint over decoration; clarity over cleverness.</div></div>
+        <div class="cell"><div class="n">03 / Quality</div><div class="t" data-i18n="ph3t">It just works</div><div class="s" data-i18n="ph3s">Reproducible, tested, private by default — made to outlast the hype cycle.</div></div>
+        <div class="cell"><div class="n">04 / Open</div><div class="t" data-i18n="ph4t">Yours to keep</div><div class="s" data-i18n="ph4s">MIT-licensed and offline-capable. Fork it, run it forever, make it your own.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="idx">→</span><h2 data-i18n="nextTitle">What's next</h2></div>
+      <ul class="reveal">
+        <li><span class="n">N1</span><span class="x" data-i18n="n1">AI for travel & destinations<small data-i18n="n1s">Itinerary copilots, destination storytelling, agents that plan and guide.</small></span></li>
+        <li><span class="n">N2</span><span class="x" data-i18n="n2">New media for leisure & wellbeing<small data-i18n="n2s">Content and community products that make leisure and big-health experiences richer.</small></span></li>
+        <li><span class="n">N3</span><span class="x" data-i18n="n3">Human-centered agents<small data-i18n="n3s">AI that serves people in the real world — warm, useful, and yours.</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap reveal">
+      <p class="quote">“The people who are crazy enough to think they can change the world are the ones who do.”</p>
+      <a class="big-mail" href="mailto:18610587087@163.com">18610587087@163.com</a>
+      <div class="links2">
+        <a href="https://github.com/DENGYUFAN0">GitHub ↗</a>
+        <a href="https://github.com/DENGYUFAN0/dazi-agent" data-i18n="c1">dazi-agent ↗</a>
+        <a href="https://dengyufan0.github.io/fire-compass/" data-i18n="c2">fire-compass ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 DENG YUFAN</span>
+    <span data-i18n="footTag">Design. Code. Humanity.</span>
+    <span>Built from scratch · No template</span>
+  </footer>
+
+<script>
+  const STR = {
+    en: {
+      sig:'DENG YUFAN ✦ DENGYUFAN0',
+      heroVision:'Bringing AI and new media to the experience industries — travel, leisure, and wellbeing.',
+      mFocus:'AI · New media', mFields:'Tourism · Leisure · Health', mStance:'Human-centered', scroll:'Selected work',
+      statement_html:'I build human-centered products where AI and new media meet the <span class="em">experience industries</span> — travel, leisure, and wellbeing. Technology should make real experiences warmer, not colder.',
+      workTitle:'Selected Work',
+      p1kind:'AI agents · Social / Leisure', p1desc:'Agent-mediated human connection: two strangers’ AI agents meet for a chat first — if they click, the people do. A small bet on AI making social and leisure life warmer.',
+      p2kind:'AI · Embodied agents', p2desc:'An AI-driven agent that perceives and acts inside a living virtual world — a sandbox for how agents behave in immersive, playful spaces.',
+      p3kind:'New media · Tourism · Web', p3desc:'A new-media showcase of China’s natural landscapes — digital storytelling for destinations and travel.',
+      p4kind:'Product · Web · Engineering', p4desc:'An inflation-aware financial-independence calculator — privacy-first, zero-dependency, unit-tested. Proof I ship polished, trustworthy products end to end.',
+      liveDemo:'Live demo',
+      moreK:'Also',
+      moreV_html:'Generative & creative-coding experiments (strange-equilibria), a cross-border shopping monitor, and assorted web pieces — the craft that feeds the work above. See all on <a href="https://github.com/DENGYUFAN0?tab=repositories" style="border-bottom:1px solid var(--ember);color:var(--ember)">GitHub ↗</a>.',
+      philoTitle:'How I work',
+      ph1t:'People first', ph1s:'Technology should warm real-world experiences — travel, leisure, health — not replace them.',
+      ph2t:'Form follows function', ph2s:'Every element earns its place. Restraint over decoration; clarity over cleverness.',
+      ph3t:'It just works', ph3s:'Reproducible, tested, private by default — made to outlast the hype cycle.',
+      ph4t:'Yours to keep', ph4s:'MIT-licensed and offline-capable. Fork it, run it forever, make it your own.',
+      nextTitle:'What’s next',
+      n1:'AI for travel & destinations', n1s:'Itinerary copilots, destination storytelling, agents that plan and guide.',
+      n2:'New media for leisure & wellbeing', n2s:'Content and community products that make leisure and big-health experiences richer.',
+      n3:'Human-centered agents', n3s:'AI that serves people in the real world — warm, useful, and yours.',
+      c1:'dazi-agent ↗', c2:'fire-compass ↗', footTag:'Design. Code. Humanity.'
+    },
+    zh: {
+      sig:'DENG YUFAN ✦ DENGYUFAN0',
+      heroVision:'把人工智能与新媒体,带进体验型行业 —— 旅游、休闲与大健康。',
+      mFocus:'AI · 新媒体', mFields:'旅游 · 休闲 · 大健康', mStance:'以人为本', scroll:'精选作品',
+      statement_html:'我做以人为本的产品,让人工智能与新媒体走进<span class="em">体验型行业</span> —— 旅游、休闲、大健康。技术应当让真实的体验更有温度,而不是更冷。',
+      workTitle:'精选作品',
+      p1kind:'AI agent · 社交 / 休闲', p1desc:'用 agent 撮合人与人:两个陌生人的 AI agent 先替主人聊一聊 —— 聊对了,人再见面。一次小小的下注:让 AI 把社交与休闲变得更有温度。',
+      p2kind:'AI · 具身智能体', p2desc:'在虚拟世界里自主感知与行动的 AI agent —— 研究智能体在沉浸式、可玩空间中的行为。',
+      p3kind:'新媒体 · 旅游 · Web', p3desc:'中国自然景观的新媒体展示站 —— 为目的地与旅行做数字叙事。',
+      p4kind:'产品 · Web · 工程', p4desc:'考虑通胀的财务自由计算器 —— 隐私优先、零依赖、有单元测试。证明我能从头到尾做出可信、精致的产品。',
+      liveDemo:'在线体验',
+      moreK:'此外',
+      moreV_html:'生成与创意编程实验(strange-equilibria)、跨境代购监控,以及各类网页 —— 这些手艺反哺上面的作品。全部见 <a href="https://github.com/DENGYUFAN0?tab=repositories" style="border-bottom:1px solid var(--ember);color:var(--ember)">GitHub ↗</a>。',
+      philoTitle:'我如何做事',
+      ph1t:'以人为先', ph1s:'技术应当温暖真实世界的体验 —— 旅游、休闲、健康 —— 而不是取代它们。',
+      ph2t:'形式追随功能', ph2s:'每个元素都得挣得它的位置。克制胜过装饰,清晰胜过炫技。',
+      ph3t:'顺滑可靠', ph3s:'可复现、有测试、原生隐私 —— 做得比风口更长久。',
+      ph4t:'归你所有', ph4s:'MIT 开源、可离线运行。尽管 fork、永久使用、改成你自己的。',
+      nextTitle:'接下来',
+      n1:'面向旅游与目的地的 AI', n1s:'行程 copilot、目的地叙事、会规划会带路的 agent。',
+      n2:'服务休闲与大健康的新媒体', n2s:'让休闲与大健康体验更丰富的内容与社区产品。',
+      n3:'以人为本的 agent', n3s:'在真实世界里服务于人的 AI —— 有温度、有用、归你。',
+      c1:'dazi-agent ↗', c2:'fire-compass ↗', footTag:'Design. Code. Humanity.'
+    }
+  };
+  let lang = (function(){ try{ return localStorage.getItem('dyf_lang') || 'en'; }catch(e){ return 'en'; } })();
+  function applyLang(){
+    document.documentElement.lang = lang==='zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('#langSeg button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ const v=STR[lang][el.dataset.i18n]; if(v!=null) el.textContent=v; });
+    const st=document.querySelector('[data-i18n="statement"]'); if(st) st.innerHTML=STR[lang].statement_html;
+    const mo=document.querySelector('[data-i18n="moreV"]'); if(mo) mo.innerHTML=STR[lang].moreV_html;
+  }
+  function setLang(l){ lang=l; try{ localStorage.setItem('dyf_lang',l); }catch(e){} applyLang(); }
+
+  (function(){
+    const cv = document.getElementById('hero-art'); const ctx = cv.getContext('2d');
+    const A=-2.736, B=-2.736, C=2.994, D=1.735;
+    let W,H,DPR,cx,cy,scale, x=0.1,y=0.1, raf, drawn=0, TARGET;
+    function size(){
+      DPR = Math.min(window.devicePixelRatio||1, 2);
+      W = cv.clientWidth; H = cv.clientHeight; cv.width = W*DPR; cv.height = H*DPR;
+      ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H);
+      let px=0.1,py=0.1,mnX=1e9,mnY=1e9,mxX=-1e9,mxY=-1e9;
+      for(let i=0;i<600;i++){const nx=Math.sin(A*py)-Math.cos(B*px);const ny=Math.sin(C*px)-Math.cos(D*py);px=nx;py=ny;}
+      for(let i=0;i<24000;i++){const nx=Math.sin(A*py)-Math.cos(B*px);const ny=Math.sin(C*px)-Math.cos(D*py);px=nx;py=ny;if(px<mnX)mnX=px;if(px>mxX)mxX=px;if(py<mnY)mnY=py;if(py>mxY)mxY=py;}
+      const rng=Math.max(mxX-mnX,mxY-mnY)||1; scale=(Math.min(W,H)*0.92)/rng;
+      cx=(mnX+mxX)/2 - (W*0.16)/scale; cy=(mnY+mxY)/2;
+      x=0.1;y=0.1; for(let i=0;i<800;i++){const nx=Math.sin(A*y)-Math.cos(B*x);const ny=Math.sin(C*x)-Math.cos(D*y);x=nx;y=ny;}
+      drawn=0; TARGET = Math.min(260000, Math.floor(W*H*0.16)); ctx.fillStyle='rgba(34,52,74,0.5)';
+      if(raf) cancelAnimationFrame(raf); loopDraw();
+    }
+    function loopDraw(){
+      const n=2600, hw=W/2, hh=H/2;
+      for(let i=0;i<n;i++){ const nx=Math.sin(A*y)-Math.cos(B*x); const ny=Math.sin(C*x)-Math.cos(D*y); x=nx;y=ny;
+        ctx.fillRect((x-cx)*scale+hw,(y-cy)*scale+hh,0.8,0.8); }
+      drawn+=n; if(drawn<TARGET) raf=requestAnimationFrame(loopDraw);
+    }
+    let rt; window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(size,180); }); size();
+  })();
+
+  const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  applyLang();
+</script>
+</body>
+</html>
